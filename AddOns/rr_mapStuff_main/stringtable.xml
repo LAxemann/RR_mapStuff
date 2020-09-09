@@ -1,0 +1,29 @@
+﻿<Project name="RR_mapStuff">
+    <Package name="Medical">
+        <Key ID="STR_RR_mapStuff_mapPut">
+            <Original>Put map on ground</Original>
+            <English>Put map on ground</English>
+            <German>Karte ablegen</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_mapOpen">
+			<Original>Look at</Original>
+            <English>Look at</English>
+            <German>Anschauen</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_mapTake">
+			 <Original>Take map</Original>
+            <English>Take map</English>
+            <German>Aufheben</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_pullMapFromCorpse">
+			 <Original>Pull map from body</Original>
+            <English>Pull map from body</English>
+            <German>Karte von Körper nehmen</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_mapName">
+			 <Original>Area map (interactive)</Original>
+            <English>Area map (interactive)</English>
+            <German>Gebietskarte (Interaktiv)</German>
+        </Key>
+    </Package>
+</Project>
