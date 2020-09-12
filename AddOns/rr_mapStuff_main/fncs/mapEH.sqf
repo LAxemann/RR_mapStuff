@@ -23,6 +23,7 @@ if (cameraOn != ace_player) exitWith {};
 if !(alive ace_player) exitWith  {};
 if !("ItemMap" in (assignedItems ace_player)) exitWith {};
 if (ace_player getVariable ["RR_mapStuff_isWatchingMap",false]) exitWith {};
+if !(isNull findDisplay 160) exitWith {};
 
 if (_mapIsOpened) then {
 	private _isProne = ((stance ace_player) == "PRONE");
