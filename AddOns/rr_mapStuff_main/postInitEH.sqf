@@ -14,16 +14,6 @@ addMissionEventHandler ["Map", {
 	_this call RR_mapStuff_fnc_mapEH;
 }];
 
-[] spawn {
-	waitUntil {time > 0.5};
-	while {true} do {
-		waitUntil {sleep 0.5; (!(alive ace_player)) || (ace_player getVariable ["ace_isunconscious",false])};
-		private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
-		ace_player setVariable ["RR_mapStuff_mapMarkers",_markerArray,true];
-		waitUntil {sleep 0.5; ((alive ace_player) || !(ace_player getVariable ["ace_isunconscious",false]))};
-	};
-};
-
 
 
 ["ace_unconscious", {
