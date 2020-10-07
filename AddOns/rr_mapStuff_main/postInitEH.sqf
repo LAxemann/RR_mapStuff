@@ -1,6 +1,6 @@
 ﻿if !(hasInterface) exitWith {};
 
-private _put 	= ["RR_mapStuff_mapPut",  localize "STR_RR_mapStuff_mapPut",  "", {_this call RR_mapStuff_fnc_mapPut},  {"ItemMap" in assignedItems ace_player && !visibleMap}] call ace_interact_menu_fnc_createAction;
+private _put 	= ["RR_mapStuff_mapPut",  localize "STR_RR_mapStuff_mapPut",  "", {_this call RR_mapStuff_fnc_mapPut},  {"ItemMap" in assignedItems ace_player && !visibleMap && ((vehicle ace_player) == ace_player)}] call ace_interact_menu_fnc_createAction;
 private _open 	= ["RR_mapStuff_mapOpen", localize "STR_RR_mapStuff_mapOpen", "", {_this call RR_mapStuff_fnc_mapOpen}, {!(visibleMap)}] call ace_interact_menu_fnc_createAction;
 private _take 	= ["RR_mapStuff_mapTake", localize "STR_RR_mapStuff_mapTake", "", {_this call RR_mapStuff_fnc_mapTake}, {true}] call ace_interact_menu_fnc_createAction;
 
