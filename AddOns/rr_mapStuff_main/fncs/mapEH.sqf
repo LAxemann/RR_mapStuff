@@ -33,6 +33,11 @@ if (_mapIsOpened) then {
 	ace_player playAction _startAnim;
 	private _map = "RR_map_handheld" createVehicle [-1,-1,-1];
 	private _mapBackSide = "Land_Map_blank_F" createVehicle [-1,-1,-1];
+	{
+		_map disableCollisionWith _x;
+		_mapBackSide disableCollisionWith _x;
+	} forEach allPlayers;
+	[_map,_mapBackSide] remoteExecCall ["RR_mapStuff_fnc_handleMapCollision",0,false];
 
 
 	{
