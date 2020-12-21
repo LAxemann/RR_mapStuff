@@ -18,7 +18,7 @@ addMissionEventHandler ["Map", {
 
 ["ace_unconscious", {
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
-	ace_player setVariable ["RR_mapStuff_mapMarkers",_markerArray,true];
+	ace_player setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 }] call CBA_fnc_addEventHandler;
 
 
@@ -26,5 +26,5 @@ addMissionEventHandler ["Map", {
 ace_player addEventHandler ["Killed", {
 	params ["_unit"];
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
-	_unit setVariable ["RR_mapStuff_mapMarkers",_markerArray,true];
+	_unit setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 }];

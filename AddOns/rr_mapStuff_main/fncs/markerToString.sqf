@@ -43,5 +43,4 @@ toFixed -1;
 	markerColor _markerName, 
 	markerAlpha _markerName, 
 	markerText _markerName
-]	
-joinString _delimiter
+] joinString _delimiter;

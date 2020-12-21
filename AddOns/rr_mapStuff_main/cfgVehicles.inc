@@ -41,7 +41,7 @@ class CfgVehicles {
 					class RR_mapStuff_pullMapFromCorpse {
 						displayName = "$STR_RR_mapStuff_pullMapFromCorpse";
 						condition = "('ItemMap' in (assignedItems _target)) && (!(alive _target) || (_target getVariable ['ace_isunconscious',false]))";
-						statement = "[_target,_player] call RR_mapStuff_fnc_pullMapFromCorpse";
+						statement = "[_target,_player] call RR_mapStuff_fnc_callPullMapFromCorpse";
 						exceptions[] = {"isNotSwimming"};
 						showDisabled = 0;	
 					};

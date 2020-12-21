@@ -19,7 +19,7 @@ params ["_markerArray"];
 private _copiedMarkers = [];
 {
 	_x params ["_marker","_markerString"];
-	_createdMarker = _markerString call RR_mapStuff_fnc_stringToMarkerLocal;
+	_createdMarker = _markerString call RR_mapStuff_fnc_stringToMarker;
 	if (_createdMarker != "") then {
 		_copiedMarkers pushBack _createdMarker;
 	};

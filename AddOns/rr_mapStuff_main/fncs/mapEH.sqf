@@ -3,7 +3,7 @@
 *
 *	Desc: 
 *   Handles players holding a physical map when accessing their map
-*	by regularly pressing M-
+*	by regularly pressing M
 *
 *	Params:
 *	0 - Map is opened <BOOL>
@@ -13,9 +13,8 @@
 *	nil
 *
 *	Example: 
-*   call RR_mapStuff_fnc_showPlayerMarkers
+*   
 * =================================================*/
-
 
 params ["_mapIsOpened", "_mapIsForced"];
 /* ExitChecks */
@@ -47,7 +46,7 @@ if (_mapIsOpened) then {
 	_map setVectorDirAndUp [[0,0.5,0.9], [0,0,0.1]];
 	_mapBackSide setVectorDirAndUp [[0,0.3,0.5], [0,0.5,0]];
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
-	_map setVariable ["RR_mapStuff_mapMarkers",_markerArray,true];
+	_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	
 	{
 		if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {

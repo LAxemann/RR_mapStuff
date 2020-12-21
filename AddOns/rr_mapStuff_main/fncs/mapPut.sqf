@@ -28,7 +28,7 @@ if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 
 // Get player markers and store it inside the map
 private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
-_map setVariable ["RR_mapStuff_mapMarkers",_markerArray,true];
+_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 
 _map setDir ((direction ace_player) + 90);
 _map setPosATL ((getPosATL ace_player) vectorAdd (vectorDir ace_player));
