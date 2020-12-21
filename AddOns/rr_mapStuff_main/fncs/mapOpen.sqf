@@ -20,8 +20,7 @@ params [
 	"_player"
 ];
 
-
-private _mapOwner = owner _mapObject;
+private _mapOwner = _mapObject getVariable ["RR_mapStuff_ownerClientID",2];
 private _clientID = clientOwner;
 
 [_clientID,_mapObject] remoteExecCall ["RR_mapStuff_fnc_sendMapInfo",_mapOwner];

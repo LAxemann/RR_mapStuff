@@ -17,7 +17,7 @@
 * =================================================*/
 
 params ["_mapIsOpened", "_mapIsForced"];
-/* ExitChecks */
+
 if (cameraOn != ace_player) exitWith {};
 if !(alive ace_player) exitWith  {};
 if !("ItemMap" in (assignedItems ace_player)) exitWith {};
@@ -31,6 +31,7 @@ if (_mapIsOpened) then {
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
 	ace_player playAction _startAnim;
 	private _map = "RR_map_handheld" createVehicle [-1,-1,-1];
+	_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
 	private _mapBackSide = "Land_Map_blank_F" createVehicle [-1,-1,-1];
 	{
 		_map disableCollisionWith _x;

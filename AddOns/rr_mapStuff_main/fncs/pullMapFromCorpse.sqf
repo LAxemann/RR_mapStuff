@@ -17,6 +17,7 @@ params [
 
 // Create map and set its texture according to world. Otherwise use Altis' map
 private _map = "RR_map" createVehicle [-1,-1,-1];
+_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
 if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 	_map setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
 } else {

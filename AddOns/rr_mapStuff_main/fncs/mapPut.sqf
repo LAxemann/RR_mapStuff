@@ -18,15 +18,16 @@
 
 ace_player playActionNow "PutDown";
 
-// Create map and set its texture according to world. Otherwise use Altis' map
+
 private _map = "RR_map" createVehicle [-1,-1,-1];
+_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
 if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 	_map setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
 } else {
 	_map setObjectTextureGlobal [0, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
 };
 
-// Get player markers and store it inside the map
+
 private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 _map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 
