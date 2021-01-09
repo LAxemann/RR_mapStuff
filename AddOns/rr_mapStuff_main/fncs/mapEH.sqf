@@ -54,7 +54,7 @@ if (_mapIsOpened) then {
 	} forEach [_map,_mapBackSide];
 	
 	ace_player setVariable ["RR_mapStuff_mapObjects",[_map,_mapBackSide]];
-	ace_player playActionNow _mainAnim)
+	ace_player playActionNow _mainAnim;
 	
 	[] spawn {
 		private _lastStance = stance ace_player;
