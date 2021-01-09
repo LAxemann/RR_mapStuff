@@ -39,11 +39,7 @@ if (_mapIsOpened) then {
 	} forEach allPlayers;
 	[_map,_mapBackSide] remoteExecCall ["RR_mapStuff_fnc_handleMapCollision",0,false];
 
-
-	{
-		_x attachTo [ace_player,[0.25,0,0.1],"leftHand"];
-		[_x,true] remoteExecCall ["hideObject", 0, false] 
-	} forEach [_map,_mapBackSide];
+	[_map,_mapBackSide] spawn RR_mapStuff_fnc_handleMapState;
 	_map setVectorDirAndUp [[0,0.5,0.9], [0,0,0.1]];
 	_mapBackSide setVectorDirAndUp [[0,0.3,0.5], [0,0.5,0]];
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
@@ -58,8 +54,7 @@ if (_mapIsOpened) then {
 	} forEach [_map,_mapBackSide];
 	
 	ace_player setVariable ["RR_mapStuff_mapObjects",[_map,_mapBackSide]];
-	
-	[{{if !(isNull _x) then {[_x,false] remoteExecCall ["hideObject", 0, false] }} forEach (_this select 0); ace_player playActionNow (_this select 1)}, [[_map,_mapBackSide],_mainAnim], 0.1] call CBA_fnc_waitAndExecute;
+	ace_player playActionNow _mainAnim)
 	
 	[] spawn {
 		private _lastStance = stance ace_player;
