@@ -30,30 +30,40 @@ if (_mapIsOpened) then {
 	private _startAnim = ["RR_gesture_transitionToMapStand","RR_gesture_holdMapProne"] select _isProne;
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
 	ace_player playAction _startAnim;
-	private _map = "RR_map_handheld" createVehicle [-1,-1,-1];
+	
+	switch (worldname) do {
+		case "Altis": {
+			map = "Land_Map_Unfolded_Altis_F" createVehicle [-1,-1,-1];
+		};
+		case "Malden": {
+			map = "Land_Map_Unfolded_Malden_F" createVehicle [-1,-1,-1];
+		}; 
+		case "Tanoa": {
+			map = "Land_Map_Unfolded_Tanoa_F" createVehicle [-1,-1,-1];
+		}; 
+		case "Enoch": {
+			map = "Land_Map_Unfolded_Enoch_F" createVehicle [-1,-1,-1];
+		}; 
+		default {
+			map = "Land_Map_Unfolded_F" createVehicle [-1,-1,-1];
+		}; 
+	};
+	
+	private _map = map;
 	_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
-	private _mapBackSide = "Land_Map_blank_F" createVehicle [-1,-1,-1];
 	{
 		_map disableCollisionWith _x;
-		_mapBackSide disableCollisionWith _x;
 	} forEach allPlayers;
-	[_map,_mapBackSide] remoteExecCall ["RR_mapStuff_fnc_handleMapCollision",0,false];
-
-	[_map,_mapBackSide] spawn RR_mapStuff_fnc_handleMapState;
-	_map setVectorDirAndUp [[0,0.5,0.9], [0,0,0.1]];
-	_mapBackSide setVectorDirAndUp [[0,0.3,0.5], [0,0.5,0]];
+	[_map] remoteExecCall ["RR_mapStuff_fnc_handleMapCollision",0,false];
+	[_map] spawn RR_mapStuff_fnc_handleMapState;
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 	_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	
-	{
-		if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
-			_x setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
-		} else {
-			_x setObjectTextureGlobal [0, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
-		};
-	} forEach [_map,_mapBackSide];
+	if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap") && !(worldname in ["Altis","Stratis","Malden","Tanoa","Enoch"])) then {
+		_map setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
+	};
 	
-	ace_player setVariable ["RR_mapStuff_mapObjects",[_map,_mapBackSide]];
+	ace_player setVariable ["RR_mapStuff_mapObjects",[_map]];
 	ace_player playActionNow _mainAnim;
 	
 	[] spawn {
