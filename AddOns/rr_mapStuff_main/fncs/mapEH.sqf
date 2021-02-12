@@ -31,25 +31,15 @@ if (_mapIsOpened) then {
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
 	ace_player playAction _startAnim;
 	
-	switch (worldname) do {
-		case "Altis": {
-			map = "Land_Map_Unfolded_Altis_F" createVehicle [-1,-1,-1];
-		};
-		case "Malden": {
-			map = "Land_Map_Unfolded_Malden_F" createVehicle [-1,-1,-1];
-		}; 
-		case "Tanoa": {
-			map = "Land_Map_Unfolded_Tanoa_F" createVehicle [-1,-1,-1];
-		}; 
-		case "Enoch": {
-			map = "Land_Map_Unfolded_Enoch_F" createVehicle [-1,-1,-1];
-		}; 
-		default {
-			map = "Land_Map_Unfolded_F" createVehicle [-1,-1,-1];
-		}; 
+	private _mapName = switch (worldname) do {
+		case "Altis": {"Land_Map_Unfolded_Altis_F"};
+		case "Malden": {"Land_Map_Unfolded_Malden_F"};
+		case "Tanoa": {"Land_Map_Unfolded_Tanoa_F"};
+		case "Enoch": {"Land_Map_Unfolded_Enoch_F"};
+		default {"Land_Map_Unfolded_F"};
 	};
 	
-	private _map = map;
+	private _map = _mapName createVehicle [-1,-1,-1];
 	_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
 	{
 		_map disableCollisionWith _x;
