@@ -46,6 +46,7 @@ if (_mapIsOpened) then {
 	} forEach allPlayers;
 	[_map] remoteExecCall ["RR_mapStuff_fnc_handleMapCollision",0,false];
 	[_map] spawn RR_mapStuff_fnc_handleMapState;
+	_map setVectorDirAndUp [[0,0.5,0.9], [0,0,0.1]];
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 	_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	
