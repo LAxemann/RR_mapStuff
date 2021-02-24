@@ -2,8 +2,7 @@
 *	Author: LAxemann
 *
 *	Desc: 
-*   Places a map object into the world, sets its textures
-*	and unlinks the player's map
+*   Inits the opening of an RR map by requesting marker info from the map's owner.
 *
 *	Params:
 *	None
@@ -12,7 +11,7 @@
 *	Created map object
 *
 *	Example: 
-*   call RR_mapStuff_fnc_mapPut
+*   [map,player] call RR_mapStuff_fnc_mapOpen
 * =================================================*/
 
 params [
