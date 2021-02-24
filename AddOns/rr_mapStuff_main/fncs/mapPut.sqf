@@ -20,7 +20,6 @@ ace_player playActionNow "PutDown";
 
 
 private _map = "RR_map" createVehicle [-1,-1,-1];
-_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
 if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 	_map setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
 } else {
@@ -30,8 +29,10 @@ if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 
 private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 _map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
+_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
+_map setVariable ["RR_mapStuff_clientsWatching",[]];
 
-_map setDir ((direction ace_player) + 90);
+_map setDir ((direction ace_player) + 180);
 _map setPosATL ((getPosATL ace_player) vectorAdd (vectorDir ace_player));
 
 ace_player unlinkItem "ItemMap";

@@ -21,7 +21,7 @@ params ["_mapIsOpened", "_mapIsForced"];
 if (cameraOn != ace_player) exitWith {};
 if !(alive ace_player) exitWith  {};
 if !("ItemMap" in (assignedItems ace_player)) exitWith {};
-if (ace_player getVariable ["RR_mapStuff_isWatchingMap",false]) exitWith {};
+if !(isNull (ace_player getVariable ["RR_mapStuff_openedMap",objNull])) exitWith {};
 if !(isNull findDisplay 160) exitWith {};
 if ((vehicle ace_player) != ace_player) exitWith {};
 
@@ -30,21 +30,24 @@ if (_mapIsOpened) then {
 	private _startAnim = ["RR_gesture_transitionToMapStand","RR_gesture_holdMapProne"] select _isProne;
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
 	ace_player playAction _startAnim;
-	private _map = "RR_map_handheld" createVehicle [-1,-1,-1];
-	_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
-	private _mapBackSide = "Land_Map_blank_F" createVehicle [-1,-1,-1];
+	private _map = "RR_map_handheld" createVehicle [-1,-1,0];
+	private _mapBackSide = "Land_Map_blank_F" createVehicle [-1,-1,0];
 	{
 		_map disableCollisionWith _x;
 		_mapBackSide disableCollisionWith _x;
 	} forEach allPlayers;
 	[_map,_mapBackSide] remoteExecCall ["RR_mapStuff_fnc_handleMapCollision",0,false];
 
+
+	/* Create an array of current markers and store it locally on the map */
 	[_map,_mapBackSide] spawn RR_mapStuff_fnc_handleMapState;
-	_map setVectorDirAndUp [[0,0.5,0.9], [0,0,0.1]];
-	_mapBackSide setVectorDirAndUp [[0,0.3,0.5], [0,0.5,0]];
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 	_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
+	_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
+	_map setVariable ["RR_mapStuff_clientsWatching",[]];
+
 	
+	/* Try to assign fitting (world) textures to the map */
 	{
 		if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 			_x setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
@@ -55,7 +58,9 @@ if (_mapIsOpened) then {
 	
 	ace_player setVariable ["RR_mapStuff_mapObjects",[_map,_mapBackSide]];
 	ace_player playActionNow _mainAnim;
-	
+
+
+	/* Handle animation changes */
 	[] spawn {
 		private _lastStance = stance ace_player;
 		while {visibleMap && alive ace_player} do {
@@ -77,6 +82,6 @@ if (_mapIsOpened) then {
 		} forEach _mapObjects;
 		ace_player playAction "RR_gesture_mapStuffEmpty";
 		ace_player setVariable ["RR_mapStuff_mapObjects",nil];
-		ace_player setVariable ["RR_mapStuff_isWatchingMap",false];
+		ace_player setVariable ["RR_mapStuff_openedMap",objNull];
 	};
 };
