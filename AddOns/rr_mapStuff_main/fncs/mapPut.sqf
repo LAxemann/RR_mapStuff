@@ -28,7 +28,7 @@ if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 
 {
 	_map disableCollisionWith _x;
-} forEach ([allPlayers] + vehicles);
+} forEach (allPlayers + vehicles);
 
 private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 _map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
