@@ -26,6 +26,9 @@ if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 	_map setObjectTextureGlobal [0, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
 };
 
+{
+	_map disableCollisionWith _x;
+} forEach ([allPlayers] + vehicles);
 
 private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 _map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
