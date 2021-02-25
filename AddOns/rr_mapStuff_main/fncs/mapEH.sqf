@@ -28,7 +28,14 @@ if ((vehicle ace_player) != ace_player) exitWith {};
 if (_mapIsOpened) then {
 	private _isProne = ((stance ace_player) == "PRONE");
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
-	private _map = "RR_map_handheld" createVehicle [-1,-1,0];
+	private _mapName = switch (worldname) do {
+		case "Altis": {"Land_Map_Unfolded_Altis_F"};
+		case "Malden": {"Land_Map_Unfolded_Malden_F"};
+		case "Tanoa": {"Land_Map_Unfolded_Tanoa_F"};
+		case "Enoch": {"Land_Map_Unfolded_Enoch_F"};
+		default {"Land_Map_Unfolded_F"};
+	};
+	private _map = _mapName createVehicle [-1,-1,0];
 
 	/* Create an array of current markers and store it locally on the map */
 	[_map] spawn RR_mapStuff_fnc_handleMapState;
@@ -39,12 +46,8 @@ if (_mapIsOpened) then {
 
 	
 	/* Try to assign fitting (world) textures to the map */
-	if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
+	if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap") && !(worldname in ["Altis","Stratis","Malden","Tanoa","Enoch"])) then {
 		_map setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
-		_map setObjectTextureGlobal [1, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
-	} else {
-		_map setObjectTextureGlobal [0, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
-		_map setObjectTextureGlobal [1, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
 	};
 
 	
