@@ -27,20 +27,11 @@ if ((vehicle ace_player) != ace_player) exitWith {};
 
 if (_mapIsOpened) then {
 	private _isProne = ((stance ace_player) == "PRONE");
-	private _startAnim = ["RR_gesture_transitionToMapStand","RR_gesture_holdMapProne"] select _isProne;
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
-	ace_player playAction _startAnim;
 	private _map = "RR_map_handheld" createVehicle [-1,-1,0];
-	private _mapBackSide = "Land_Map_blank_F" createVehicle [-1,-1,0];
-	{
-		_map disableCollisionWith _x;
-		_mapBackSide disableCollisionWith _x;
-	} forEach allPlayers;
-	[_map,_mapBackSide] remoteExecCall ["RR_mapStuff_fnc_handleMapCollision",0,false];
-
 
 	/* Create an array of current markers and store it locally on the map */
-	[_map,_mapBackSide] spawn RR_mapStuff_fnc_handleMapState;
+	[_map] spawn RR_mapStuff_fnc_handleMapState;
 	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
 	_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
@@ -48,15 +39,16 @@ if (_mapIsOpened) then {
 
 	
 	/* Try to assign fitting (world) textures to the map */
-	{
-		if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
-			_x setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
-		} else {
-			_x setObjectTextureGlobal [0, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
-		};
-	} forEach [_map,_mapBackSide];
+	if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
+		_map setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
+		_map setObjectTextureGlobal [1, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
+	} else {
+		_map setObjectTextureGlobal [0, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
+		_map setObjectTextureGlobal [1, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
+	};
+
 	
-	ace_player setVariable ["RR_mapStuff_mapObjects",[_map,_mapBackSide]];
+	ace_player setVariable ["RR_mapStuff_mapObject",_map];
 	ace_player playActionNow _mainAnim;
 
 
@@ -73,15 +65,11 @@ if (_mapIsOpened) then {
 		};
 	};
 } else {
-	private _mapObjects = ace_player getVariable ["RR_mapStuff_mapObjects",[]];
-	if ((count _mapObjects) > 0) then {
-		{
-			if !(isNull _x) then {
-				deleteVehicle _x 
-			}
-		} forEach _mapObjects;
+	private _mapObject = ace_player getVariable ["RR_mapStuff_mapObject",objNull];
+	if !(isNull _mapObject) then {
+		deleteVehicle _mapObject; 
 		ace_player playAction "RR_gesture_mapStuffEmpty";
-		ace_player setVariable ["RR_mapStuff_mapObjects",nil];
+		ace_player setVariable ["RR_mapStuff_mapObject",objNull];
 		ace_player setVariable ["RR_mapStuff_openedMap",objNull];
 	};
 };

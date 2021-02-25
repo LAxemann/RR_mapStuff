@@ -15,10 +15,10 @@
 *   call RR_mapStuff_fnc_markerDeletedEH
 * =================================================*/
 
-private _mapObjects = ace_player getVariable ["RR_mapStuff_mapObjects",[]];
 private _map = objNull;
-if ((count _mapObjects) > 0) then {
-	_map = _mapObjects select 0;
+private _mapObject = ace_player getVariable ["RR_mapStuff_mapObject",objNull];
+if !(isNull _mapObject) then {
+	_map = _mapObject;
 } else {
 	private _openedMap = ace_player getVariable ["RR_mapStuff_openedMap",objNull];
 	private _mapOwner = _openedMap getVariable ["RR_mapStuff_ownerClientID",2];

@@ -29,9 +29,9 @@ if ((_creator != ace_player) || !hasInterface) exitWith {};
 	map object in case the marker was created by the "owner" of the map */
 private _mapOnGround = false;
 private _map = objNull;
-private _mapObjects = ace_player getVariable ["RR_mapStuff_mapObjects",[]];
-if ((count _mapObjects) > 0) then {
-	_map = _mapObjects select 0;
+private _mapObject = ace_player getVariable ["RR_mapStuff_mapObject",objNull];
+if !(isNull _mapObject) then {
+	_map = _mapObject;
 } else {
 	private _openedMap = ace_player getVariable ["RR_mapStuff_openedMap",objNull];
 	private _mapOwner = _openedMap getVariable ["RR_mapStuff_ownerClientID",2];

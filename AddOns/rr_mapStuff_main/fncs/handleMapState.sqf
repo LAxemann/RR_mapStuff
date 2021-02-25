@@ -1,10 +1,8 @@
-params ["_map","_mapBackside",["_delay",0.25]];
+params ["_map",["_delay",0.25]];
 sleep _delay;
-if (isNull _map || isNull _mapBackSide) exitWith {};
+if (isNull _map) exitWith {};
 
-{
-	_x attachTo [ace_player,[0.25,0.15,-0.17],"leftHand",true];
-} forEach [_map,_mapBackSide];
+_map attachTo [ace_player,[0.09,0.098,-0.155],"leftHand",true];
 
-_map setVectorDirAndUp [[0.5,0.7,0.3], [0.3,0,0.2]];
-_mapBackSide setVectorDirAndUp [[0.5,0.7,0.3], [0.36,0.9,0.19]];
+_map setVectorDirAndUp [[-0.2,1,0], [0.3,0,0.15]];
+

@@ -33,7 +33,6 @@ class CfgGesturesMale {
 			file="";
 			looped=0;
 			speed=9.9;
-			//mask="handsWeapon";
 			mask="rrMapHolding";
 			canPullTrigger=1;
 			headBobMode=2;
@@ -75,18 +74,6 @@ class CfgGesturesMale {
 			headBobStrength=0.2;
 			rightHandIKCurve[]={0};
 			leftHandIKCurve[]={0};
-		};
-		class RR_gesture_transitionToMapStand: RR_gesture_holdMapStand {
-			file="LAxemann\RR_mapStuff\addons\RR_mapStuff_main\anims\mapStandTestTransition.rtm";
-			looped=0;
-			speed=-0.6666;
-			connectTo[] = {"RR_gesture_holdMapStand", 1};
-			interpolateTo[] = {"RR_gesture_holdMapStand", 1};
-			rightHandIKCurve[]={
-				0.0,1,
-				0.4,1,
-				0.5,0
-			};
 		};
 		class RR_gesture_holdMapProne: RR_gesture_holdMapStand {
 			file="LAxemann\RR_mapStuff\addons\RR_mapStuff_main\anims\mapProneTest.rtm";
