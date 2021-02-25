@@ -22,10 +22,15 @@
 params [["_markerName", "", [""]], ["_delimiter", "|", [""]]];
 
 private _markerShape = markerShape _markerName;
-if (_markerShape isEqualTo "POLYLINE") exitWith { ["Polyline marker `%1` cannot be serialized", _markerName] call BIS_fnc_error; "" };
+private _polyLineArray = [];
+private _markerType = "none";
+if (_markerShape isEqualTo "POLYLINE") then {
+	_polyLineArray = markerPolyline _markerName;
+} else {
+	_markerType = markerType _markerName;
+};
 
-private _markerType = markerType _markerName;
-if (_markerType isEqualTo "") exitWith { [["Invalid marker type for `%1`", "Marker `%1` does not exist"] select (allMapMarkers findIf { _x == _markerName } < 0), _markerName] call BIS_fnc_error; "" };
+
 
 toFixed 4;
 private _markerPosition = str markerPos [_markerName, true];
@@ -42,5 +47,6 @@ toFixed -1;
 	markerBrush _markerName, 
 	markerColor _markerName, 
 	markerAlpha _markerName, 
+	str _polyLineArray,
 	markerText _markerName
 ] joinString _delimiter;

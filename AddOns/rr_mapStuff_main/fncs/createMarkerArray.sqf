@@ -20,9 +20,7 @@
 private _markerArray = [];
 {
 	_marker = _x;
-	if ((markerType _marker) != "") then {
-		_markerArray pushBack [_x,_marker call RR_mapStuff_fnc_markerToString]
-	};
+	_markerArray pushBack [_x,_marker call RR_mapStuff_fnc_markerToString]
 } forEach allMapMarkers;
 
 _markerArray;

@@ -2,16 +2,16 @@
 *	Author: LAxemann
 *
 *	Desc: 
-*   Inits the opening of an RR map by requesting marker info from the map's owner.
+*   Inits the copying of another map
 *
 *	Params:
-*	None
+*	
 *
 *	Returns:
-*	Created map object
+*	
 *
 *	Example: 
-*   [map,player] call RR_mapStuff_fnc_mapOpen
+*   
 * =================================================*/
 
 params [
@@ -19,8 +19,10 @@ params [
 	"_player"
 ];
 
+private _hasOwnMap = "ItemMap" in (assignedItems ace_player);
+if !(_hasOwnMap) exitWith {hint localize "STR_RR_mapStuff_noOwnMap"};
+
 private _mapOwner = _mapObject getVariable ["RR_mapStuff_ownerClientID",2];
 private _clientID = clientOwner;
 
-[_clientID,_mapObject] remoteExecCall ["RR_mapStuff_fnc_sendMapInfo",_mapOwner];
-
+[_clientID,_mapObject,true] remoteExecCall ["RR_mapStuff_fnc_sendMapInfo",_mapOwner];

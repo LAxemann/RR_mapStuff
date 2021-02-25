@@ -2,7 +2,6 @@ class CfgVehicles {
 	class All;
 	class Thing: All {};
 	class ThingX: Thing {};
-	
 	class Items_base_F: ThingX {};
 	class Land_Map_blank_F: Items_base_F {};
 	class RR_map: Land_Map_blank_F {
@@ -13,15 +12,11 @@ class CfgVehicles {
         ace_dragging_carryPosition[] = {0, 1.2, 1.5};  
         ace_dragging_carryDirection = 0;  
 	};
-	class RR_map_handheld: ThingX {
+	class RR_map_handheld: Land_Map_blank_F {
+		displayName = "Gebietskarte";
 		scope = 1;
 		scopeCurator = 1;
-        displayName = "$STR_RR_mapStuff_mapName";
-        model="LAxemann\RR_mapStuff\AddOns\rr_mapStuff_main\models\Paper_Map.p3d";
-        mapSize = 1;
-        hiddenSelections[] = {"Front","Back"};
-        hiddenSelectionsTextures[] = {"\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa","\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"};
-    };
+	};
 	
 	class AllVehicles: All {};	
 	class Land: AllVehicles {};	

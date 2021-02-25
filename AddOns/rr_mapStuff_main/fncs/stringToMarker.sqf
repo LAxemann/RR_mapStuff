@@ -36,18 +36,27 @@ _markerData splitString (_markerData select [0,1]) params
 	"_markerBrush",
 	"_markerColor",
 	"_markerAlpha",
+	"_polyLineArray",
 	["_markerText",""]
 ];
 
-private _marker = createMarker [_markerName, parseSimpleArray _markerPos];
+_polyLineArray = parseSimpleArray _polyLineArray;
 
-_marker setMarkerType _markerType;
-_marker setMarkerShape _markerShape;
-_marker setMarkerSize parseSimpleArray _markerSize;
-_marker setMarkerDir parseNumber _markerDir;
-_marker setMarkerBrush _markerBrush;
-_marker setMarkerColor _markerColor;
-_marker setMarkerAlpha parseNumber _markerAlpha;
-_marker setMarkerText _markerText;
+private _marker = createMarkerLocal [_markerName, parseSimpleArray _markerPos];
+
+_marker setMarkerShapeLocal _markerShape;
+_marker setMarkerColorLocal _markerColor;
+_marker setMarkerAlphaLocal parseNumber _markerAlpha;
+
+
+if ((count _polyLineArray) > 0) then {
+	_marker setMarkerPolylineLocal _polyLineArray;
+} else {
+	_marker setMarkerTypeLocal _markerType;
+	_marker setMarkerSizeLocal parseSimpleArray _markerSize;
+	_marker setMarkerBrushLocal _markerBrush;
+	_marker setMarkerTextLocal _markerText;
+	_marker setMarkerDirLocal parseNumber _markerDir;
+};
 
 _marker 

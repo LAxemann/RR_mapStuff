@@ -21,9 +21,19 @@
 
 params [
 	"_callerID",
-	"_mapObject"
+	"_mapObject",
+	["_isCopying",false]
 ];
 private _markerArray = _mapObject getVariable ["RR_mapStuff_mapMarkers",[]];
-[_mapObject,_markerArray] remoteExecCall ["RR_mapStuff_fnc_getAndHandleMarkers",_callerID];
+
+
+if !(_isCopying) then {
+	[_mapObject,_markerArray] remoteExecCall ["RR_mapStuff_fnc_getAndHandleMarkers",_callerID];
+	private _clientsWatching = _mapObject getVariable ["RR_mapStuff_clientsWatching",[]];
+	_clientsWatching pushBackUnique _callerID;
+	_mapObject setVariable ["RR_mapStuff_clientsWatching",_clientsWatching];
+} else {
+	[_markerArray] remoteExecCall ["RR_mapStuff_fnc_copyToOwnMap",_callerID];
+};
 
 nil;

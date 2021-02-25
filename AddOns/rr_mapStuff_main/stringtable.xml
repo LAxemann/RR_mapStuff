@@ -25,5 +25,20 @@
             <English>Area map (interactive)</English>
             <German>Gebietskarte (Interaktiv)</German>
         </Key>
+        <Key ID="STR_RR_mapStuff_mapCopy">
+			 <Original>Copy map</Original>
+            <English>Copy map</English>
+            <German>Karte kopieren</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_noOwnMap">
+			 <Original>No own map to copy onto!</Original>
+            <English>No own map to copy onto!</English>
+            <German>Kopieren von Karten ist nur mit eigener Karte möglich!</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_copied">
+			 <Original>Copied map!</Original>
+            <English>Copied map!</English>
+            <German>Karte kopiert!</German>
+        </Key>
     </Package>
 </Project>
