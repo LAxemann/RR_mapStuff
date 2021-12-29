@@ -43,7 +43,6 @@ if (((weaponState ace_player) select 6) > 0) exitWith {
 };
 
 if (_mapIsOpened) then {
-	hint "Yes!";
 	private _isProne = ((stance ace_player) == "PRONE");
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
 	private _map = "RR_map_handheld" createVehicle [-1,-1,0];
