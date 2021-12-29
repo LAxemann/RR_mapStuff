@@ -40,5 +40,35 @@
             <English>Copied map!</English>
             <German>Karte kopiert!</German>
         </Key>
+        <Key ID="STR_RR_mapStuff_cba_enableMapAnimations">
+			 <Original>Enable Map Animations</Original>
+            <English>Enable Map Animations</English>
+            <German>Aktiviere Kartenanimationen</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_cba_enableMapAnimations_Desc">
+			 <Original>When checked, players will hold a map in front of them when using a map. Requires a restart.</Original>
+            <English>When checked, players will hold a map in front of them when using a map. Requires a restart.</English>
+            <German>Wenn angehakt, halten Spieler eine Karte vor sich, sobald sie die Karte benutzen. Benötigt Neustart.</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_cba_enableMapIntaractions">
+			 <Original>Enable Map Interactions</Original>
+            <English>Enable Map Interactions</English>
+            <German>Aktiviere Kartenaninteraktionen</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_cba_enableMapIntaractions_Desc">
+			 <Original>When checked, players will be able to interact with the maps of other players. Requires a restart.</Original>
+            <English>When checked, players will be able to interact with the maps of other players. Requires a restart.</English>
+            <German>Wenn angehakt, sind erweiterte Karteninteraktionen wie das Kopieren und Anschauen anderer Karten möglich. Benötigt Neustart.</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_cba_enableCompassAnimations">
+			 <Original>Enable Compass Animations</Original>
+            <English>Enable Compass Animations</English>
+            <German>Aktiviere Kompassanimationen</German>
+        </Key>
+        <Key ID="STR_RR_mapStuff_cba_enableCompassAnimations_Desc">
+			 <Original>When checked, players will hold a compass in front of them when using their compass. Requires a restart.</Original>
+            <English>When checked, players will hold a compass in front of them when using their compass. Requires a restart.</English>
+            <German>Wenn angehakt, halten Spieler beim Benutzen ihres Kompasses einen Kompass vor sich. Benötigt Neustart.</German>
+        </Key>
     </Package>
 </Project>

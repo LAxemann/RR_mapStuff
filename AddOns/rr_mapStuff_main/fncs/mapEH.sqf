@@ -25,7 +25,25 @@ if !(isNull (ace_player getVariable ["RR_mapStuff_openedMap",objNull])) exitWith
 if !(isNull findDisplay 160) exitWith {};
 if ((vehicle ace_player) != ace_player) exitWith {};
 
+/* Schedule map opening in case player is reloading */
+if (((weaponState ace_player) select 6) > 0) exitWith {
+	if !(RR_mapStuff_mapOpenQueued) then {
+		RR_mapStuff_mapOpenQueued = true;
+		[
+			{(!visibleMap) || (((weaponState ace_player) select 6) == 0)}, 
+			{
+				if (visibleMap) then {
+					[true,false] call RR_mapStuff_fnc_mapEH;
+					RR_mapStuff_mapOpenQueued = false;
+				};
+			}, 
+			[]
+		] call CBA_fnc_waitUntilAndExecute;
+	};
+};
+
 if (_mapIsOpened) then {
+	hint "Yes!";
 	private _isProne = ((stance ace_player) == "PRONE");
 	private _mainAnim  = ["RR_gesture_holdMapStand","RR_gesture_holdMapProne"] select _isProne;
 	private _map = "RR_map_handheld" createVehicle [-1,-1,0];
@@ -65,11 +83,5 @@ if (_mapIsOpened) then {
 		};
 	};
 } else {
-	private _mapObject = ace_player getVariable ["RR_mapStuff_mapObject",objNull];
-	if !(isNull _mapObject) then {
-		deleteVehicle _mapObject; 
-		ace_player playAction "RR_gesture_mapStuffEmpty";
-		ace_player setVariable ["RR_mapStuff_mapObject",objNull];
-		ace_player setVariable ["RR_mapStuff_openedMap",objNull];
-	};
+	call RR_mapStuff_fnc_endMapAnims;
 };
