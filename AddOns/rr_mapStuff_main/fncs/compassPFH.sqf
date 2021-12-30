@@ -17,7 +17,7 @@
 private _stance = stance ace_player;
 private _isProne = (_stance == "PRONE");
 if !(visibleCompass == RR_mapStuff_lastCompassState) then {
-	if (((weaponState ace_player) select 6) == 0) then {
+	if ((((weaponState ace_player) select 6) == 0) && {(vehicle ace_player) == ace_player}) then {
 		if (visibleCompass && {(vehicle ace_player) == ace_player}) then {
 			ace_player playAction (["RR_gesture_holdCompassStand","RR_gesture_holdCompassProne"] select _isProne);
 			private _compassObject = "land_compass_f" createVehicle [1,1,1];
