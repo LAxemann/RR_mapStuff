@@ -30,7 +30,7 @@ if !(isNull _map) then {
 	[_map] spawn {
 		params ["_map"];
 		sleep 0.05;
-		private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
+		private _markerArray = [nil,false] call RR_mapStuff_fnc_createMarkerArray;
 		_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	};
 };

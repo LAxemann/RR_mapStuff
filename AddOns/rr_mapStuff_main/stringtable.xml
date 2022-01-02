@@ -70,5 +70,10 @@
             <English>When checked, players will hold a compass in front of them when using their compass. Requires a restart.</English>
             <German>Wenn angehakt, halten Spieler beim Benutzen ihres Kompasses einen Kompass vor sich. Benötigt Neustart.</German>
         </Key>
+        <Key ID="STR_RR_mapStuff_noDuplicateMap">
+			 <Original>You already have a map in your inventory!</Original>
+            <English>You already have a map in your inventory!</English>
+            <German>Du hast bereits eine Karte in Deinem Inventar!</German>
+        </Key>
     </Package>
 </Project>

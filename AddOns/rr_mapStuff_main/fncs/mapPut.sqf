@@ -30,7 +30,7 @@ if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
 	_map disableCollisionWith _x;
 } forEach (allPlayers + vehicles);
 
-private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
+private _markerArray = [nil,false] call RR_mapStuff_fnc_createMarkerArray;
 _map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 _map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
 _map setVariable ["RR_mapStuff_clientsWatching",[]];
@@ -39,5 +39,7 @@ _map setDir ((direction ace_player) + 180);
 _map setPosATL ((getPosATL ace_player) vectorAdd (vectorDir ace_player));
 
 ace_player unlinkItem "ItemMap";
+
+[ace_player,_map] call ace_dragging_fnc_carryObject;
 
 _map;

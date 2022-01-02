@@ -16,13 +16,13 @@
 * =================================================*/
 
 params ["_mapObject"];
-ace_player playActionNow "PutDown";
-deleteVehicle _mapObject;
 
-if ("itemMap" in (assignedItems ace_player)) then {
-	ace_player addItem "itemMap";
+if ("ItemMap" in (assignedItems ace_player)) then {
+	hint localize "STR_RR_mapStuff_noDuplicateMap";
 } else {
 	ace_player linkItem "ItemMap";
+	ace_player playActionNow "PutDown";
+	deleteVehicle _mapObject;
 };
 
-nil
+nil;

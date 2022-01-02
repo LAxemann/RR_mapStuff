@@ -10,7 +10,7 @@ class CfgVehicles {
 		scope = 2;
 		scopeCurator = 2;
         ace_dragging_canCarry = 1;  
-        ace_dragging_carryPosition[] = {0, 1.2, 1.5};  
+        ace_dragging_carryPosition[] = {0, 1.2, 0.8};  
         ace_dragging_carryDirection = 0;  
 	};
 	class RR_map_handheld: ThingX {

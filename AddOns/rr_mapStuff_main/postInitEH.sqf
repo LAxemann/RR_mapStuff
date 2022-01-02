@@ -19,7 +19,7 @@ if (RR_mapStuff_enableMapInteractions) then {
 	["RR_map_handheld", 0, ["ACE_MainActions"], _copy] call ace_interact_menu_fnc_addActionToClass;
 	
 	["ace_unconscious", {
-		private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
+		private _markerArray = [nil,false] call RR_mapStuff_fnc_createMarkerArray;
 		ace_player setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	}] call CBA_fnc_addEventHandler;
 
@@ -27,7 +27,7 @@ if (RR_mapStuff_enableMapInteractions) then {
 
 	ace_player addEventHandler ["Killed", {
 		params ["_unit"];
-		private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
+		private _markerArray = [nil,false] call RR_mapStuff_fnc_createMarkerArray;
 		_unit setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	}];
 
@@ -62,4 +62,9 @@ if (RR_mapStuff_enableCompassAnimations) then {
 			call RR_mapStuff_fnc_compassPFH;
 		}, 
 	0.25] call CBA_fnc_addPerFrameHandler;
+};
+
+if ((count (ace_player getVariable ["RR_mapStuff_mapMarkers",[]])) > 0) then {
+	private _markerArray = ace_player getVariable ["RR_mapStuff_mapMarkers",[]];
+	[_markerArray,true] call RR_mapStuff_fnc_copyToOwnMap;
 };

@@ -49,20 +49,14 @@ if (_mapIsOpened) then {
 
 	/* Create an array of current markers and store it locally on the map */
 	[_map] spawn RR_mapStuff_fnc_handleMapState;
-	private _markerArray = call RR_mapStuff_fnc_createMarkerArray;
+	private _markerArray = [nil,false] call RR_mapStuff_fnc_createMarkerArray;
 	_map setVariable ["RR_mapStuff_mapMarkers",_markerArray];
 	_map setVariable ["RR_mapStuff_ownerClientID",clientOwner,true];
 	_map setVariable ["RR_mapStuff_clientsWatching",[]];
 
 	
 	/* Try to assign fitting (world) textures to the map */
-	if (isText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")) then {
-		_map setObjectTextureGlobal [0, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
-		_map setObjectTextureGlobal [1, getText (configFile >> "CfgWorlds" >> worldName >> "pictureMap")];
-	} else {
-		_map setObjectTextureGlobal [0, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
-		_map setObjectTextureGlobal [1, "\A3\structures_f_epb\Items\Documents\Data\map_altis_co.paa"];
-	};
+	[_map] call RR_mapStuff_fnc_adapMapTexture;
 
 	
 	ace_player setVariable ["RR_mapStuff_mapObject",_map];
