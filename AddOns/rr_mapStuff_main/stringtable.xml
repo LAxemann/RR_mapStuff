@@ -4,71 +4,99 @@
             <Original>Put map on ground</Original>
             <English>Put map on ground</English>
             <German>Karte ablegen</German>
+            <Chinesesimp>将地图放在地上</Chinesesimp>
+            <Chinese>將地圖放在地上</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_mapOpen">
 			<Original>Look at</Original>
             <English>Look at</English>
             <German>Anschauen</German>
+            <Chinesesimp>查看</Chinesesimp>
+            <Chinese>查看</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_mapTake">
 			 <Original>Take map</Original>
             <English>Take map</English>
             <German>Aufheben</German>
+            <Chinesesimp>拿起地图</Chinesesimp>
+            <Chinese>拿起地圖</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_pullMapFromCorpse">
 			 <Original>Pull map from body</Original>
             <English>Pull map from body</English>
             <German>Karte von Körper nehmen</German>
+            <Chinesesimp>从身上拿出地图</Chinesesimp>
+            <Chinese>從身上拿出地圖</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_mapName">
 			 <Original>Area map (interactive)</Original>
             <English>Area map (interactive)</English>
             <German>Gebietskarte (Interaktiv)</German>
+            <Chinesesimp>区域地图（互动式）</Chinesesimp>
+            <Chinese>區域地圖（互動式）</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_mapCopy">
 			 <Original>Copy map</Original>
             <English>Copy map</English>
             <German>Karte kopieren</German>
+            <Chinesesimp>拓印地图</Chinesesimp>
+            <Chinese>拓印地圖</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_noOwnMap">
 			 <Original>No own map to copy onto!</Original>
             <English>No own map to copy onto!</English>
             <German>Kopieren von Karten ist nur mit eigener Karte möglich!</German>
+            <Chinesesimp>没有自己的地图可供拓印！</Chinesesimp>
+            <Chinese>沒有自己的地圖可供拓印！</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_copied">
 			 <Original>Copied map!</Original>
             <English>Copied map!</English>
             <German>Karte kopiert!</German>
+            <Chinesesimp>已拓印地图！</Chinesesimp>
+            <Chinese>已拓印地圖！</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_cba_enableMapAnimations">
 			 <Original>Enable Map Animations</Original>
             <English>Enable Map Animations</English>
             <German>Aktiviere Kartenanimationen</German>
+            <Chinesesimp>启用地图动画</Chinesesimp>
+            <Chinese>啟用地圖動畫</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_cba_enableMapAnimations_Desc">
 			 <Original>When checked, players will hold a map in front of them when using a map. Requires a restart.</Original>
             <English>When checked, players will hold a map in front of them when using a map. Requires a restart.</English>
             <German>Wenn angehakt, halten Spieler eine Karte vor sich, sobald sie die Karte benutzen. Benötigt Neustart.</German>
+            <Chinesesimp>勾选后，玩家在使用地图时，会将地图拿在面前。需要重启。</Chinesesimp>
+            <Chinese>勾選後，玩家在使用地圖時，會將地圖拿在面前。需要重啟。</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_cba_enableMapIntaractions">
 			 <Original>Enable Map Interactions</Original>
             <English>Enable Map Interactions</English>
             <German>Aktiviere Kartenaninteraktionen</German>
+            <Chinesesimp>启用地图互动</Chinesesimp>
+            <Chinese>啟用地圖互動</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_cba_enableMapIntaractions_Desc">
 			 <Original>When checked, players will be able to interact with the maps of other players. Requires a restart.</Original>
             <English>When checked, players will be able to interact with the maps of other players. Requires a restart.</English>
             <German>Wenn angehakt, sind erweiterte Karteninteraktionen wie das Kopieren und Anschauen anderer Karten möglich. Benötigt Neustart.</German>
+            <Chinesesimp>勾选后，玩家将能够与其他玩家的地图互动。需要重启。</Chinesesimp>
+            <Chinese>勾選後，玩家將能夠與其他玩家的地圖互動。需要重啟。</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_cba_enableCompassAnimations">
 			 <Original>Enable Compass Animations</Original>
             <English>Enable Compass Animations</English>
             <German>Aktiviere Kompassanimationen</German>
+            <Chinesesimp>启用指南针动画</Chinesesimp>
+            <Chinese>啟用指南針動畫</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_cba_enableCompassAnimations_Desc">
 			 <Original>When checked, players will hold a compass in front of them when using their compass. Requires a restart.</Original>
             <English>When checked, players will hold a compass in front of them when using their compass. Requires a restart.</English>
             <German>Wenn angehakt, halten Spieler beim Benutzen ihres Kompasses einen Kompass vor sich. Benötigt Neustart.</German>
+            <Chinesesimp>勾选后，玩家在使用指南针时，会将指南针拿在面前。需要重启。</Chinesesimp>
+            <Chinese>勾選後，玩家在使用指南針時，會將指南針拿在面前。需要重啟。</Chinese>
         </Key>
         <Key ID="STR_RR_mapStuff_noDuplicateMap">
 			 <Original>You already have a map in your inventory!</Original>
