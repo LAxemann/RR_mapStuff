@@ -56,7 +56,7 @@ if (_mapIsOpened) then {
 
 	
 	/* Try to assign fitting (world) textures to the map */
-	[_map] call RR_mapStuff_fnc_adapMapTexture;
+	[_map] call RR_mapStuff_fnc_adaptMapTexture;
 
 	
 	ace_player setVariable ["RR_mapStuff_mapObject",_map];
